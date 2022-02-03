@@ -1,18 +1,106 @@
 html{
-    background: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 body{
+    margin: 0;
+    background-image: url('./hero.jpg');
+    background-attachment: fixed;
+    background-size: contain;
+    width: 100%;
     display: grid;
-    grid-template-columns: 50px 50px;
-    grid-template-rows: repeat(3, 1fr);
-    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 3% 10% 75vh 20% auto 3%;
+    grid-template-areas: 
+        'navbar navbar'
+        'title title'
+        'hero hero'
+        'music music'
+        'video contact'
+        'footer footer'
+    ;
+    grid-gap: 5%;
     width: 100%;
 }
 
-body section{
-    width: 50px;
-    height: 50px;
-    margin: 10px;
-    background: black;
+#navbar{
+    grid-area: navbar;
+}
+.title{
+    grid-area: title;
+    text-align: center;
+    color: seashell;
+}
+.title h1{
+    font-size: 10vh;
+}
+.title p{
+    font-size: 3vh;
+}
+
+#hero{
+    grid-area: hero;
+}
+.music-showcase{
+    grid-area: music;
+    background-color: springgreen;
+}
+
+/*Videos Section Start*/
+.videos{
+    grid-area: video;
+    display: flex;
+    justify-content: justify;
+    flex-direction: column;
+}
+.videos > * {
+    margin: 0 auto 5vh auto;
+}
+.videos h2{
+    background: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 2vh;
+    width: 90%;
+}
+.videos iframe{
+    width: 90%;
+    height: 60%;
+}
+/*Videos Section End*/
+
+/*Contact Start*/
+.contact-me{
+    grid-area: contact;
+    padding: 0 auto;
+    background: rgba(255, 255, 255, 0.5);
+    width: 90%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: justify;
+
+    text-align: left;
+}
+.contact-me h2{
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2vh;
+}
+.contact-inputs{
+    font-size: 0.5vh;
+    display: flex;
+    flex-direction: column;
+}
+.contact-inputs input{
+    width: 80%;
+}
+.message textarea{
+    width: 90%;
+    height: 60%;
+}
+/*Contact End*/
+
+
+footer{
+    grid-area: footer;
+    background-color: yellow;
 }
