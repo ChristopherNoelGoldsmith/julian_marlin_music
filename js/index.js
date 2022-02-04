@@ -23,130 +23,140 @@ const UIController = (function(){
         title: '#title',
         cover: '#cover'
     };
+
+    const queryDOM = {
+        musicContainer: document.querySelector(DOMstrings.musicContainer),
+        playBtn: document.querySelector(DOMstrings.playBtn),
+        prevBtn: document.querySelector(DOMstrings.prevBtn),
+        nextBtn: document.querySelector(DOMstrings.nextBtn),
+        audio: document.querySelector(DOMstrings.audio),
+        progress: document.querySelector(DOMstrings.progress),
+        progressContainer: document.querySelector(DOMstrings.progressContainer),
+        title: document.querySelector(DOMstrings.title),
+        cover: document.querySelector(DOMstrings.cover)
+    };
      
 
     return  {
         getDomStrings: function(){
             return DOMstrings;
+        },
+        getQuerys: function(){
+            return queryDOM;
         }
-    }
+    };
 
 })();
 
-songController = (function(){
+const songController = (function(UICtrl){
 
-    //keep track of music
+    const query = UICtrl.getQuerys();
+
+// Control Variables
+    let songIndex = 0;
+    const songs =  ['song', 'song2', 'song3'];
+
+    const playButton = query.playBtn.addEventListener('click', () => {
+        const isPlaying = query.musicContainer.classList.contains('play');
+        isPlaying ? audioPlayer.pauseSong: audioPlayer.playSong;
+        });
+
+///////////////////////////
     
-    //loads songs lol
+    const audioPlayer = {
+        loadSong : function(arr){
+            query.title.innerText = arr;
+            audio.src = `music/${arr}.mp3`;
+            cover.src = `img/${arr}.jpg`;
+        },
 
-});
+        playSong: function(){
+            query.musicContainer.classList.add('play');
+            query.playBtn.querySelector('i.fas').classList.remove('fa-play');
+            query.playBtn.querySelector('i.fas').classList.add('fa-pause');
 
-const controller = (function(UICtrl, songCtrl){
+            audio.play();
+        },
+
+        pauseSong: function(){
+            query.musicContainer.classList.remove('play');
+            query.playBtn.querySelector('i.fas').classList.remove('fa-pause');
+            query.playBtn.querySelector('i.fas').classList.add('fa-play');
+
+            audio.pause();
+        },
+
+        prevSong: function(){
+            songIndex--
+            if(songIndex < 0){
+                songIndex = songs.length - 1;
+            };
+
+            loadSong(songs[songIndex]);
+
+            playSong();
+        },
+    //song index values need to be edited to be more scaleable
+        nextSong: function(){
+            console.log('working');
+            songIndex++
+            if(songIndex > songs.length -1){
+                songIndex = 0;
+            }
+
+            loadSong(songs[songIndex]);
+
+            playSong();
+        },
+    //progress functions
+        updateProgress: function(ev){
+            //deconstructor
+            const {duration, currentTime} = ev.srcElement;
+            const progressPercent = (currentTime/duration) * 100;
+            query.progress.style.width = `${progressPercent}%`;
+        },
+        setProgress: function(e){
+            const width = this.clientWidth;
+            const clickX = e.offsetX;
+            const duration = audio.duration;
+
+            audio.currentTime = (clickX / width * duration);
+        }
+    };
+//play pause button toggle
+
+
+    return{
+        getAudioPlayer: function(){
+            return audioPlayer;
+        }
+    };
+
+})(UIController);
+
+const controller = (function(UICtrl, songCtr){
 
     //importing dom targets from UIcontroller
     const DOM = UICtrl.getDomStrings();
-//Needs to be made into its own ctrl    
-//const song = songCtrl;
-
-let songIndex = 0;
-const songs =  ['song', 'song2', 'song3'];
-
-
-//
+    const query = UICtrl.getQuerys();
+    const songCtrl = songCtr.getAudioPlayer();
 
     const setupEventListeners = function(){
         console.log('events listening');
-
-        console.log(query(DOM.musicContainer).classList);
-
         //targets music container's play and pause button.
-        document.querySelector(DOM.playBtn).addEventListener('click', () => {
-            const isPlaying = query(DOM.musicContainer).classList.contains('play');
-            isPlaying ? pauseSong(): playSong();
+        query.playBtn.addEventListener('click', () => {
+            const isPlaying = query.musicContainer.classList.contains('play');
+            isPlaying ? songCtrl.pauseSong(): songCtrl.playSong();
         });
-
         //targets previous and next buttons button
-        document.querySelector(DOM.prevBtn).addEventListener('click', prevSong);
-        document.querySelector(DOM.nextBtn).addEventListener('click', nextSong);
+        query.prevBtn.addEventListener('click', songCtrl.prevSong);
+        query.nextBtn.addEventListener('click', songCtrl.nextSong);
         //sets the progressbar
-        audio.addEventListener('timeupdate', updateProgress);
-        document.querySelector(DOM.progressContainer).addEventListener('click', setProgress);
+        audio.addEventListener('timeupdate', songCtrl.updateProgress);
+        query.progressContainer.addEventListener('click', songCtrl.setProgress);
         //changes to next song when song over
-        audio.addEventListener('ended', nextSong);
+        audio.addEventListener('ended', songCtrl.nextSong);
     };
-
-    const query = function(str){
-        return document.querySelector(str);
-    };
-
-    
-    const loadSong = function(arr){
-        query(DOM.title).innerText = arr;
-        audio.src = `music/${arr}.mp3`;
-        cover.src = `img/${arr}.jpg`;
-    }
-
-    const playSong = function(){
-        query(DOM.musicContainer).classList.add('play');
-        query(DOM.playBtn).querySelector('i.fas').classList.remove('fa-play');
-        query(DOM.playBtn).querySelector('i.fas').classList.add('fa-pause');
-
-        audio.play();
-    };
-
-    const pauseSong = function(){
-        query(DOM.musicContainer).classList.remove('play');
-        query(DOM.playBtn).querySelector('i.fas').classList.remove('fa-pause');
-        query(DOM.playBtn).querySelector('i.fas').classList.add('fa-play');
-
-        audio.pause();
-    };
-
-    const prevSong = function(){
-        songIndex--
-        if(songIndex < 0){
-            songIndex = songs.length - 1;
-        }
-
-        loadSong(songs[songIndex]);
-
-        playSong();
-    };
-//song index values need to be edited to be more scaleable
-    const nextSong = function(){
-        console.log('working');
-        songIndex++
-        if(songIndex > songs.length -1){
-            songIndex = 0;
-        }
-
-        loadSong(songs[songIndex]);
-
-        playSong();
-    };
-//progress functions
-    const updateProgress = function(ev){
-        //deconstructor
-        const {duration, currentTime} = ev.srcElement;
-        const progressPercent = (currentTime/duration) * 100;
-        document.querySelector(DOM.progress).style.width = `${progressPercent}%`;
-    };
-
-    const setProgress = function(e){
-        const width = this.clientWidth;
-        const clickX = e.offsetX;
-        const duration = audio.duration;
-
-        audio.currentTime = (clickX / width * duration);
-    }
-//play pause button toggle
-
-    const playButton = query(DOM.playBtn).addEventListener('click', () => {
-        const isPlaying = query(DOM.musicContainer).classList.contains('play');
-        isPlaying ? pauseSong: playSong;
-    });
-
-//
 
     return {
         init: function(){
