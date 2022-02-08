@@ -40,16 +40,21 @@ body{
     text-align: center;
     color: seashell;
     padding: 5vh;
-    background-color: rgba(50, 150, 255, 0.8);
+    /*background-color: rgba(50, 150, 255, 0.8);*/
     height: 100%;
     margin: 0 auto;
     border-radius: 25%;
 }
 .title h1{
     font-size: 10vh;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
 }
 .title p{
-    font-size: 3vh;
+    font-size: 5vh;
+    font-weight: bolder;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .hero{
@@ -80,9 +85,10 @@ body{
     grid-area: about;
 }
 .about-me img{
+    position: relative;
     margin: 0 auto;
     grid-area: image;
-    height: 80%;
+    height: 70%;
 }
 h3, li{
     text-align: left;
@@ -90,17 +96,20 @@ h3, li{
 /*About me end*/
 .music-showcase{
     grid-area: music;
+    align-items: center;
+    background-color:rgba(50, 150, 255, 0.8);
 }
 .music-container{
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 20px 20px 0 rgba(255, 255, 255, 0.5);
     display: flex;
-    padding: 20px 30px;
+    padding: 2px 3px;
     position: relative;
     margin: 100px 0;
     z-index: 10;
 }
+/*music image*/
 .image-container{
     position: relative;
     width: 100px;
@@ -121,6 +130,7 @@ h3, li{
     width: inherit;
     height: 100px;
     border-radius: 50%;
+    background-color: black;
     object-fit: cover;
     position: absolute;
     bottom: 0;
@@ -231,31 +241,39 @@ h3, li{
 /*Contact Start*/
 .contact-me{
     grid-area: contact;
-    padding: 0 auto;
     background-color: rgba(50, 150, 255, 0.8);
     width: 90%;
     
     display: flex;
     flex-direction: column;
-    align-items: justify;
-
     text-align: left;
 }
 .contact-me h2{
     background: rgba(20, 255, 255, 0.8);
     padding: 2vh;
+    width: 96%;
+    margin: 0;
 }
 .contact-inputs{
     font-size: 0.5vh;
     display: flex;
     flex-direction: column;
+    width: 80%;
 }
 .contact-inputs input{
     width: 80%;
 }
 .message textarea{
-    width: 90%;
-    height: 60%;
+    width: 80%;
+    height: 50%;
+}
+#submit{
+    font-size: 2vh;
+    font-weight: bold;
+    padding: 1vh;
+    height: 20%;
+    margin-right: 50%;
+    margin-left: 50%;
 }
 /*Contact End*/
 

@@ -33,7 +33,7 @@
     <!--about me section-->
     <section class="about-me">
 
-        <h2>Who am I and what can I do?</h2>
+        <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, placeat.</h2>
 
         <div>
             <h3>My Skills</h3>
@@ -50,11 +50,10 @@
 
     <!--JS Music Player-->
     <section class="music-showcase">
-        <h2>Showcase</h2>
 
         <div class="music-container">
             <div class="music-info">
-                <h4 id="title">Song Name</h4>
+                <h4 id="title">Rainy Season</h4>
                 <div class="progress-container">
                     <div class="progress"></div>
                 </div>
@@ -87,24 +86,24 @@
     <section class="videos">
         <h2>Demoreel</h2>
         
-        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/J1i2lpspZTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/J1i2lpspZTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     </section>
 
     <!--Contact me box-->
-    <section class="contact-me">
+    <form class="contact-me" action="https://formsubmit.co/your@email.com" method="POST">
         <h2>Contact Me</h2>
         <figure class="contact-inputs" for='first-name'>
             <h3>First Name</h3>
-            <input type="text" name="first-name" id="first-name">
+            <input type="text" name="first-name" id="first-name" required>
         </figure>
         <figure class="contact-inputs" for='last-name'>
             <h3>Last Name</h3>
-            <input type="text" name="last-name" id="last-name">
+            <input type="text" name="last-name" id="last-name" required>
         </figure>
         <figure class="contact-inputs" for='email'>
             <h3>Email Address</h3>
-            <input type="email" name="email" id="email">
+            <input type="email" name="email" id="email" required>
         </figure>
         <figure class="contact-inputs" for='phone'>
             <h3>Phone</h3>
@@ -113,13 +112,14 @@
         <figure class="message" for='contact-me-text'>
             <h3>Message</h3>
             <textarea name="contact-me" id="contact-me-text" cols="30" rows="10"></textarea></figure>
-    </section>
+        <input id='submit' type="button" value="Submit">
+        </form>
     <!--Footer-->
     <footer>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
     </footer>
 </body>
 
-<script src="./js/index.js"></script>
+<script type="module" src="./js/index.js"></script>
 
 </html>
