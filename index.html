@@ -90,6 +90,15 @@
 
     </section>
 
+    <input class="btn" id="contact-btn" type="button" value="Contact Me">
+
+    <!--Footer-->
+    <footer>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
+    </footer>
+</body>
+
+<section id='contact-overlay' class='not-visable'>
     <!--Contact me box-->
     <form class="contact-me" action="https://formsubmit.co/your@email.com" method="POST">
         <h2>Contact Me</h2>
@@ -109,16 +118,14 @@
             <h3>Phone</h3>
             <input type="tel" name="phone" id="phone">
         </figure>
-        <figure class="message" for='contact-me-text'>
-            <h3>Message</h3>
-            <textarea name="contact-me" id="contact-me-text" cols="30" rows="10"></textarea></figure>
-        <input id='submit' type="button" value="Submit">
-        </form>
-    <!--Footer-->
-    <footer>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
-    </footer>
-</body>
+        <textarea name="contact-me" id="contact-me-text" cols="30" rows="10"></textarea>
+        <input class='btn' id='submit' type="button" value="Submit">
+    </form>
+    <figure id='close-btn' class='btn'>
+        <i class="fa-solid fa-circle-xmark"> Close</i>
+    </figure>
+    
+</section>
 
 <script type="module" src="./js/index.js"></script>
 

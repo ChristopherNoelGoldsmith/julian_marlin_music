@@ -22,6 +22,10 @@ const controller = (function(UICtrl, songCtr){
         query.progressContainer.addEventListener('click', songCtrl.setProgress);
         //changes to next song when song over
         audio.addEventListener('ended', songCtrl.nextSong);
+        //adds contact form button
+        query.contactBtn.addEventListener('click', query.contactFormInit);
+        query.closeBtn.addEventListener('click', query.contactFormInit);
+        
     };
 
     return {
