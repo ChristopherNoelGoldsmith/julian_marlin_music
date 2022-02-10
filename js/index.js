@@ -4,28 +4,31 @@ import { songController } from "./models/song_controller.js";
 const controller = (function(UICtrl, songCtr){
 
     //importing dom targets from UIcontroller
-    const query = UICtrl;
     const songCtrl = songCtr().getAudioPlayer();
+    const UI = new UICtrl;
 
     const setupEventListeners = function(){
         console.log('events listening');
         //targets music container's play and pause button.
-        query.playBtn.addEventListener('click', () => {
-            const isPlaying = query.musicContainer.classList.contains('play');
+        UI.playBtn.addEventListener('click', () => {
+            const isPlaying = UI.musicContainer.classList.contains('play');
             isPlaying ? songCtrl.pauseSong(): songCtrl.playSong();
         });
         //targets previous and next buttons button
-        query.prevBtn.addEventListener('click', songCtrl.prevSong);
-        query.nextBtn.addEventListener('click', songCtrl.nextSong);
+        UI.prevBtn.addEventListener('click', songCtrl.prevSong);
+        UI.nextBtn.addEventListener('click', songCtrl.nextSong);
         //sets the progressbar
         audio.addEventListener('timeupdate', songCtrl.updateProgress);
-        query.progressContainer.addEventListener('click', songCtrl.setProgress);
+        UI.progressContainer.addEventListener('click', songCtrl.setProgress);
         //changes to next song when song over
         audio.addEventListener('ended', songCtrl.nextSong);
-        //adds contact form button
-        query.contactBtn.addEventListener('click', query.contactFormInit);
-        query.closeBtn.addEventListener('click', query.contactFormInit);
-        
+        //adds navbar nuttongs button
+        UI.contactBtn.addEventListener('click', UI.contactFormInit);
+        //adds music btn
+        UI.myMusicBtn.addEventListener('click', UI.musicShowcaseInit);
+        //adds close button
+        UI.aboutMeBtn.addEventListener('click', UI.aboutMeInit);
+        UI.closeBtn.addEventListener('click', UI.closeAllWindows);
     };
 
     return {

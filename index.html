@@ -16,11 +16,21 @@
 <body>
 
 
-    <section class='navbar'>
+    <section class='navbar visable'>
 
-        <p class='icon'></p>
-
+        <p class="btn"></p>
+        <!--About Me Button-->
+        <input class="btn" id="about-btn" type="button" value="About Me">
+        <!--Music Player Button-->
+        <input class="btn" id="my-music-btn" type="button" value="My Music">
+        <!--Contact me button-->
+        <input class="btn" id="contact-btn" type="button" value="Contact Me">
+        <!--close buttons-->
     </section>
+
+    <figure id='close-btn' class='btn'>
+        <i class="fa-solid fa-circle-xmark"> Close</i>
+    </figure>
 
     <section class="title">
         <h1>Julian Marlon</h1>
@@ -31,7 +41,7 @@
     <section class="hero"></section>
 
     <!--about me section-->
-    <section class="about-me">
+    <section class="not-visable about-me">
 
         <h2>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, placeat.</h2>
 
@@ -44,12 +54,10 @@
             </ul>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit dolore doloremque facilis error explicabo? Recusandae a est aspernatur distinctio illum ratione dignissimos facere. Labore architecto tempore error eius necessitatibus, exercitationem aspernatur nulla totam minima voluptate placeat iure libero animi, distinctio sit autem cum repellat saepe culpa. Architecto obcaecati officia perferendis.</p>
         </div>
-
-        <img src="./img/face.jpg" alt="An image of Julian Marlon" class='image'>
     </section>
 
     <!--JS Music Player-->
-    <section class="music-showcase">
+    <section class="not-visable music-showcase">
 
         <div class="music-container">
             <div class="music-info">
@@ -60,12 +68,11 @@
             </div>
             <!--audio file-->
             <audio src="./music/song.mp3" id='audio'></audio>
-            <!--Image file mount-->
-            
+
             <div class="image-container">
                 <img src="./img/cover.png" alt="music-cover" id="cover">
             </div>
-                
+            
             <div class="navigation">
                     <!--buttons utilizing font-awesome-->
                 <button id="prev" class="action-btn">
@@ -82,50 +89,36 @@
 
     </section>
 
-    <!--Videos/Demoreel-->
-    <section class="videos">
-        <h2>Demoreel</h2>
-        
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/J1i2lpspZTw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
+    <section id='contact-overlay' class='not-visable'>
+        <!--Contact me box-->
+        <form class="contact-me" action="https://formsubmit.co/your@email.com" method="POST">
+            <h2>Contact Me</h2>
+            <figure class="contact-inputs" for='first-name'>
+                <h3>First Name</h3>
+                <input type="text" name="first-name" id="first-name" required>
+            </figure>
+            <figure class="contact-inputs" for='last-name'>
+                <h3>Last Name</h3>
+                <input type="text" name="last-name" id="last-name" required>
+            </figure>
+            <figure class="contact-inputs" for='email'>
+                <h3>Email Address</h3>
+                <input type="email" name="email" id="email" required>
+            </figure>
+            <figure class="contact-inputs" for='phone'>
+                <h3>Phone</h3>
+                <input type="tel" name="phone" id="phone">
+            </figure>
+            <textarea name="contact-me" id="contact-me-text" cols="30" rows="10"></textarea>
+            <input class='btn' id='submit' type="button" value="SUBMIT">
+        </form>
     </section>
 
-    <input class="btn" id="contact-btn" type="button" value="Contact Me">
-
     <!--Footer-->
-    <footer>
+    <footer class="not-visable">
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing.</p>
     </footer>
 </body>
-
-<section id='contact-overlay' class='not-visable'>
-    <!--Contact me box-->
-    <form class="contact-me" action="https://formsubmit.co/your@email.com" method="POST">
-        <h2>Contact Me</h2>
-        <figure class="contact-inputs" for='first-name'>
-            <h3>First Name</h3>
-            <input type="text" name="first-name" id="first-name" required>
-        </figure>
-        <figure class="contact-inputs" for='last-name'>
-            <h3>Last Name</h3>
-            <input type="text" name="last-name" id="last-name" required>
-        </figure>
-        <figure class="contact-inputs" for='email'>
-            <h3>Email Address</h3>
-            <input type="email" name="email" id="email" required>
-        </figure>
-        <figure class="contact-inputs" for='phone'>
-            <h3>Phone</h3>
-            <input type="tel" name="phone" id="phone">
-        </figure>
-        <textarea name="contact-me" id="contact-me-text" cols="30" rows="10"></textarea>
-        <input class='btn' id='submit' type="button" value="Submit">
-    </form>
-    <figure id='close-btn' class='btn'>
-        <i class="fa-solid fa-circle-xmark"> Close</i>
-    </figure>
-    
-</section>
 
 <script type="module" src="./js/index.js"></script>
 

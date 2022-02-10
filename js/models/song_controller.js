@@ -2,7 +2,7 @@ import { UIController } from './dom.js'
 
 export const songController = () => {
 
-    const query = UIController;
+    const query = new UIController;
 
 // Control Variables
     let songIndex = 0;
