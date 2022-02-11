@@ -1,6 +1,13 @@
-const contactMeForm = function(){
+/*import { UIController } from './dom.js';
 
+export const contactMe = {
 
-    /*on click of the contact me box, it unrolls the contact me form below. 
-    on submit of the contact me form it says thank you for sending or something then closes*/
-};
+    makeSubject () {
+        const UI = new UIController;
+        const subject = UI.subject;
+        let subjectSend = UIController.subjectSend = subject;
+        console.log(subject)
+        return subjectSend;
+    }
+
+};*/

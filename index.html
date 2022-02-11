@@ -28,7 +28,7 @@
         <!--close buttons-->
     </section>
 
-    <figure id='close-btn' class='btn'>
+    <figure id='close-btn' class='not-visable btn'>
         <i class="fa-solid fa-circle-xmark"> Close</i>
     </figure>
 
@@ -91,26 +91,38 @@
 
     <section id='contact-overlay' class='not-visable'>
         <!--Contact me box-->
-        <form class="contact-me" action="https://formsubmit.co/your@email.com" method="POST">
+        <!--needs true https address for the form submit host once the site is hosted. See read-me.md for link-->
+        <form action="https://formsubmit.co/ab646cfa1f0e37e7263efc432c032001" class="contact-me" method="POST">    
+            
+            <!--Honeypot to capture web scraping-->
+            <input type="text" name="_honey" style="display: none">
+            
+            <!--Disable Captcha-->
+            <input type="hidden" name="_captcha" value="false">
+
+            <!--Auto Response-->
+            <input type="hidden" name="_autoresponse" value="Thank you for your contacting me! I will respond as soon as possiable.">
+
+
             <h2>Contact Me</h2>
-            <figure class="contact-inputs" for='first-name'>
-                <h3>First Name</h3>
-                <input type="text" name="first-name" id="first-name" required>
+            <figure class="contact-inputs" for='subject'>
+                <h3>Subject</h3>
+                <input type="text" name="_subject" id="subject" required>
             </figure>
-            <figure class="contact-inputs" for='last-name'>
-                <h3>Last Name</h3>
-                <input type="text" name="last-name" id="last-name" required>
+            <figure class="contact-inputs" for='name'>
+                <h3>Name</h3>
+                <input type="text" name="name" id="contact-name" required>
             </figure>
             <figure class="contact-inputs" for='email'>
                 <h3>Email Address</h3>
                 <input type="email" name="email" id="email" required>
             </figure>
             <figure class="contact-inputs" for='phone'>
-                <h3>Phone</h3>
-                <input type="tel" name="phone" id="phone">
+                <h3>Phone Number</h3>
+                <input type="number" name="Phone&nbsp;Number" id="phone" placeholder="555-555-5555" >
             </figure>
-            <textarea name="contact-me" id="contact-me-text" cols="30" rows="10"></textarea>
-            <input class='btn' id='submit' type="button" value="SUBMIT">
+            <textarea name="Message" id="contact-me-text" cols="30" rows="10" required></textarea>
+            <input class='btn' id='submit' type="submit" value="SUBMIT">
         </form>
     </section>
 

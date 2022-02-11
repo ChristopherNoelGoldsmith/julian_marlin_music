@@ -30,8 +30,8 @@
     border: solid 1px white;
 }
 #close-btn{
+    /*fix width buttonis clickable too far off*/
     z-index: 100;
-    width: 10%;
     height: 5vh;
     background-color: transparent;
     color:antiquewhite;
@@ -40,6 +40,7 @@
     font-size: 2vh;
     overflow: hidden;
     top: 0;
+    transform: none;
 }
 
 body{
@@ -70,6 +71,9 @@ body{
     padding: 2vh;
     height: 5%;
     background-color: rgba(50, 50, 50, 0.9);
+}
+.navbar > * {
+    color: aliceblue;
 }
 
 
