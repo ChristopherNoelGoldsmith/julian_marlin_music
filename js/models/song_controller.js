@@ -1,4 +1,4 @@
-import { UIController } from './dom.js'
+import { UIController } from './dom.js';
 
 export const songController = () => {
 

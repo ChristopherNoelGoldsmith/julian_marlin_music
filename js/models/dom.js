@@ -3,8 +3,8 @@ export const UIController = class UI {
     //Contact Form
     constructor(){
         this.navbar = document.querySelector('.navbar');
-        this.firstName = document.querySelector('#first-name');
-        this.lastName = document.querySelector('#last-name');
+        this.subject = document.querySelector('#subject');
+        this.name = document.querySelector('#contact-name');
         this.email = document.querySelector('#email');
         this.phone = document.querySelector('#phone');
         this.contactText = document.querySelector('#contact-me-text');
@@ -38,24 +38,32 @@ export const UIController = class UI {
         the not-visable class.
         */ 
         
-        
-        for(const each in this){
+        try{
+            for(const each in this){
             
+                if(
+                typeof(this[each]) == 'object' 
+                && this[each].classList.contains('visable') 
+                && !this[each].classList.contains('navbar')
+                ){
+                    this[each].classList.remove('visable');
+                    this[each].classList.add('not-visable');
+                }
+            };
+            this.navbarVis();
+        } catch(err){
+            console.log(err)
+            console.log(`Error dom.js: The dom module is targeting an id or class that does not exist in index.html`)
             //--------dubugger--------
-            //console.log(this[each].classList);
-            //console.log(typeof(this[each]));
-            
-            if(
-            typeof(this[each]) == 'object' 
-            && this[each].classList.contains('visable') 
-            && !this[each].classList.contains('navbar')
-            ){
-                this[each].classList.remove('visable');
-                this[each].classList.add('not-visable');
-            }
-        };
-        console.log(this.makeVisable)
-        this.navbarVis();
+            for(const each in this){
+            //the missing queryselector target in the dom will be shown by the console log below
+            //it will log in descending order in the dom. look above to see the first one not logged
+            //an error will be on the next line
+            //Example: Line 18 "audio" is the last one logged, line 19 "progress" has the error.
+                console.log(each);
+
+            };
+        }
     }
     //displays the contact form
     contactFormInit = () => {
@@ -79,7 +87,8 @@ export const UIController = class UI {
         //for the small x button on the contact form
         if(eClass.contains('visable')){
             eClass.add('not-visable');
-            eClass.remove('visable')
+            eClass.remove('visable');
+            this.closeBtnVis();
         } 
         //for the contact form button on the main page
         else {            
@@ -118,3 +127,7 @@ export const UIController = class UI {
         }
     }
 };
+
+
+//use the blo code to make the menu code more streamlined
+//e.target.matches('.shopping__count-value')
