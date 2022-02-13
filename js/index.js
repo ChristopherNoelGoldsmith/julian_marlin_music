@@ -1,5 +1,6 @@
 import { UIController } from "./models/dom.js";
 import { songController } from "./models/song_controller.js";
+import { fileController } from "./models/file_controller.js";
 
 const controller = (function(UICtrl, songCtr){
 
@@ -54,3 +55,4 @@ const controller = (function(UICtrl, songCtr){
 })(UIController, songController);
 
 controller.init();
+fileController.dirScanner();
